@@ -6,12 +6,12 @@ import { StyleSheet } from 'react-native';
 export default function ThemeToggle () {
     const { theme, toggleTheme } = useTheme();
     const currentColors = Colors[theme];
-
+//TODO: Use icon rather than button possibly sun and moon
   return (
-    <Button 
-      title={`Switch to ${theme === 'light' ? 'Dark' : 'Light'} Mode`} 
-      onPress={toggleTheme} 
-      buttonStyle={[styles.button, { backgroundColor: currentColors.tint }]} 
+    <Button
+      title={`Switch to ${theme === 'light' ? 'Dark' : 'Light'} Mode`}
+      onPress={toggleTheme}
+      buttonStyle={[styles.button, { backgroundColor: currentColors.tint }]}
       titleStyle={styles.title}
     />
   )
