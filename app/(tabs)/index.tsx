@@ -24,7 +24,6 @@ const styles = StyleSheet.create({
     gap: 8,
   },
   Text: {
-    height: 10,
-    width: 10,
+    alignContent: 'center',
   }
 });

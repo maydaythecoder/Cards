@@ -1,25 +1,30 @@
-import { useState} from 'react'
-import { Button } from '@rneui/themed'
 import { Colors } from '@/constants/theme';
+import { useTheme } from '@/context/ThemeContext';
+import { Button } from '@rneui/themed';
 import { StyleSheet } from 'react-native';
 
 export default function ThemeToggle () {
-    const [Theme, setTheme] = useState(Colors.light);
+    const { theme, toggleTheme } = useTheme();
+    const currentColors = Colors[theme];
 
-    const handleTheme = () => {
-        if (Theme === Colors.light){
-            setTheme(Colors.dark)
-        }else{
-            setTheme(Colors.light)
-        }
-    }
   return (
-    <Button title={'ThemeButton'} onPress={handleTheme} style={styles.Button} />
+    <Button 
+      title={`Switch to ${theme === 'light' ? 'Dark' : 'Light'} Mode`} 
+      onPress={toggleTheme} 
+      buttonStyle={[styles.button, { backgroundColor: currentColors.tint }]} 
+      titleStyle={styles.title}
+    />
   )
 }
 
 const styles = StyleSheet.create({
-    Button: {
-        backgroundColor: '#FF0000',
+    button: {
+        paddingVertical: 12,
+        paddingHorizontal: 20,
+        borderRadius: 8,
+    },
+    title: {
+        fontSize: 14,
+        fontWeight: '600',
     }
 })
