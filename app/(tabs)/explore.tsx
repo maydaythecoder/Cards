@@ -1,19 +1,21 @@
-import { Button, StyleSheet } from 'react-native';
+import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
+import { StyleSheet } from 'react-native';
 
-export default function TabTwoScreen() {
+export default function ExploreScreen() {
   return (
-    <ThemedView style={styles.Body}>
-      <Button title='Hello'></Button>
-    </ThemedView>
+    <ThemedView style={styles.Container}>
+        <ThemedText>
+         Explore
+       </ThemedText>    </ThemedView>
   );
 }
 
 const styles = StyleSheet.create({
-  Body: {
-    color: '#808080',
-    bottom: -90,
-    left: -35,
-    position: 'absolute',
+  Container: {
+    backgroundColor: '#000000',
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });
