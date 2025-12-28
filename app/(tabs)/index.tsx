@@ -1,11 +1,11 @@
-import { useState } from 'react';
-import { StyleSheet, Pressable, ScrollView, View } from 'react-native';
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
 import ThemeToggle from '@/components/ThemeToggle';
 import { SpadesGameScreen } from '@/ui/screens/SpadesGameScreen';
+import { useState } from 'react';
+import { Pressable, ScrollView, StyleSheet, View } from 'react-native';
 
-type Screen = 'menu' | 'spades' | 'game';
+type Screen = 'menu' | 'spades' | 'poker' | 'uno' | 'turub';
 
 export default function HomeScreen() {
   const [currentScreen, setCurrentScreen] = useState<Screen>('menu');
@@ -19,6 +19,29 @@ export default function HomeScreen() {
           setCurrentScreen('menu');
         }}
       />
+    );
+  }
+
+  // Placeholder screens for other games
+  if (currentScreen === 'poker' || currentScreen === 'uno' || currentScreen === 'turub') {
+    return (
+      <ThemedView style={styles.container}>
+        <View style={styles.placeholderContent}>
+          <ThemedText style={styles.placeholderTitle}>
+            {currentScreen === 'poker' ? '🎰 Texas Hold\'em' : currentScreen === 'uno' ? '🌈 UNO' : '👑 Turub'}
+          </ThemedText>
+          <ThemedText style={styles.placeholderText}>Coming Soon!</ThemedText>
+          <ThemedText style={styles.placeholderDescription}>
+            This game is still being implemented. Please check back soon!
+          </ThemedText>
+          <Pressable
+            style={styles.backButton}
+            onPress={() => setCurrentScreen('menu')}
+          >
+            <ThemedText style={styles.backButtonText}>← Back to Menu</ThemedText>
+          </Pressable>
+        </View>
+      </ThemedView>
     );
   }
 
@@ -52,7 +75,13 @@ export default function HomeScreen() {
           </Pressable>
 
           {/* Coming Soon: Poker */}
-          <View style={[styles.gameCard, styles.comingSoon]}>
+          <Pressable
+            style={[styles.gameCard, styles.comingSoon]}
+            onPress={() => {
+              setSelectedPlayerId('p1');
+              setCurrentScreen('poker');
+            }}
+          >
             <ThemedText style={styles.gameCardTitle}>🎰 Texas Hold'em</ThemedText>
             <ThemedText style={styles.gameCardSubtitle}>6 Players • Betting</ThemedText>
             <ThemedText style={styles.gameCardDescription}>
@@ -61,10 +90,16 @@ export default function HomeScreen() {
             <View style={[styles.playButton, styles.disabledButton]}>
               <ThemedText style={styles.playButtonText}>Coming Soon</ThemedText>
             </View>
-          </View>
+          </Pressable>
 
           {/* Coming Soon: UNO */}
-          <View style={[styles.gameCard, styles.comingSoon]}>
+          <Pressable
+            style={[styles.gameCard, styles.comingSoon]}
+            onPress={() => {
+              setSelectedPlayerId('p1');
+              setCurrentScreen('uno');
+            }}
+          >
             <ThemedText style={styles.gameCardTitle}>🌈 UNO</ThemedText>
             <ThemedText style={styles.gameCardSubtitle}>10 Players • Action Cards</ThemedText>
             <ThemedText style={styles.gameCardDescription}>
@@ -73,10 +108,16 @@ export default function HomeScreen() {
             <View style={[styles.playButton, styles.disabledButton]}>
               <ThemedText style={styles.playButtonText}>Coming Soon</ThemedText>
             </View>
-          </View>
+          </Pressable>
 
           {/* Coming Soon: Turub */}
-          <View style={[styles.gameCard, styles.comingSoon]}>
+          <Pressable
+            style={[styles.gameCard, styles.comingSoon]}
+            onPress={() => {
+              setSelectedPlayerId('p1');
+              setCurrentScreen('turub');
+            }}
+          >
             <ThemedText style={styles.gameCardTitle}>👑 Turub</ThemedText>
             <ThemedText style={styles.gameCardSubtitle}>10 Players • Trump Game</ThemedText>
             <ThemedText style={styles.gameCardDescription}>
@@ -85,7 +126,7 @@ export default function HomeScreen() {
             <View style={[styles.playButton, styles.disabledButton]}>
               <ThemedText style={styles.playButtonText}>Coming Soon</ThemedText>
             </View>
-          </View>
+          </Pressable>
         </View>
 
         {/* Features */}
@@ -194,5 +235,41 @@ const styles = StyleSheet.create({
   themeToggleContainer: {
     alignItems: 'center',
     paddingVertical: 16,
+  },
+  placeholderContent: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingHorizontal: 16,
+  },
+  placeholderTitle: {
+    fontSize: 32,
+    fontWeight: 'bold',
+    marginBottom: 12,
+    textAlign: 'center',
+  },
+  placeholderText: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginBottom: 16,
+    color: '#0066cc',
+  },
+  placeholderDescription: {
+    fontSize: 16,
+    textAlign: 'center',
+    marginBottom: 32,
+    opacity: 0.7,
+    lineHeight: 24,
+  },
+  backButton: {
+    paddingVertical: 12,
+    paddingHorizontal: 24,
+    borderRadius: 8,
+    backgroundColor: '#0066cc',
+  },
+  backButtonText: {
+    fontWeight: 'bold',
+    color: '#fff',
+    fontSize: 16,
   },
 });
