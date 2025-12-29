@@ -2,9 +2,9 @@
  * Card hand component - renders a player's hand.
  */
 
+import { Card } from '@/engine/core/types';
 import React from 'react';
 import { ScrollView, StyleSheet, View } from 'react-native';
-import { Card } from '@/engine/core/types';
 import { CardComponent } from './Card';
 
 export interface CardHandProps {

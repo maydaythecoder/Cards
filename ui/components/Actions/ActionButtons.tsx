@@ -2,9 +2,9 @@
  * Action buttons component - reusable action UI for any game.
  */
 
+import { GameAction } from '@/engine/core/types';
 import React from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
-import { GameAction } from '@/engine/core/types';
 
 export interface ActionButtonsProps {
   actions: GameAction[];

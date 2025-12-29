@@ -3,9 +3,9 @@
  * Coordinates engine, local state, and networking.
  */
 
-import { useCallback, useState } from 'react';
 import { GameReducer } from '@/engine/core/reducer';
 import { GameAction, GameState } from '@/engine/core/types';
+import { useCallback, useState } from 'react';
 
 export function useGameState(
   initialState: GameState,
