@@ -3,9 +3,9 @@
  * Shows front or back, selected state, and handles presses.
  */
 
+import { Card, Suit } from '@/engine/core/types';
 import React from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
-import { Card, Suit } from '../../engine/core/types';
 
 export interface CardComponentProps {
   card: Card | { hidden: true };

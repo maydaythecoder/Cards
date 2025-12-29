@@ -4,8 +4,8 @@
  */
 
 import { useCallback, useState } from 'react';
-import { GameReducer } from '../../engine/core/reducer';
-import { GameAction, GameState } from '../../engine/core/types';
+import { GameReducer } from '@/engine/core/reducer';
+import { GameAction, GameState } from '@/engine/core/types';
 
 export function useGameState(
   initialState: GameState,

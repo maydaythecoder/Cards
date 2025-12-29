@@ -2,10 +2,10 @@
  * Game screen component - renders a game using the engine.
  */
 
+import { GameReducer } from '@/engine/core/reducer';
+import { GameState } from '@/engine/core/types';
 import React, { useState } from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
-import { GameReducer } from '../../engine/core/reducer';
-import { GameState } from '../../engine/core/types';
 
 export interface GameScreenProps {
   gameState: GameState;

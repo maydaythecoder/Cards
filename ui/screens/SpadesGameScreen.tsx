@@ -7,6 +7,9 @@
  * - Card selection and play
  */
 
+import { GameState, Player } from '@/engine/core/types';
+import { createSpadesInitialState } from '@/engine/games/spades/initial';
+import { SpadesReducer } from '@/engine/games/spades/reducer';
 import React, { useEffect, useState } from 'react';
 import {
     Dimensions,
@@ -16,9 +19,6 @@ import {
     Text,
     View
 } from 'react-native';
-import { GameState, Player } from '../../engine/core/types';
-import { createSpadesInitialState } from '../../engine/games/spades/initial';
-import { SpadesReducer } from '../../engine/games/spades/reducer';
 import { CardComponent } from '../components/Card/Card';
 import { CardHand } from '../components/Card/CardHand';
 import { useTableLayout } from '../hooks/useTableLayout';
